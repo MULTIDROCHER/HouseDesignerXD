@@ -22,12 +22,14 @@ public class MainProgramChild : MonoBehaviour
 
     private void OnDestroy()
     {
+        gameObject.SetActive(true);
         _mainProgram.Work -= OnProgramOpen;
     }
 
     private void OnProgramOpen()
     {
-        gameObject.SetActive(true);
+        if (TryGetComponent(out Window window) == false)
+            gameObject.SetActive(true);
     }
 
     private void OnProgramClose()

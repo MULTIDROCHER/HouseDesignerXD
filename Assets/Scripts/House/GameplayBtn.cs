@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameplayBtn : MonoBehaviour
@@ -16,11 +15,16 @@ public class GameplayBtn : MonoBehaviour
         foreach (var part in _carcass)
         {
             part.GetComponent<Image>().color = Color.white;
-        } 
+        }
     }
 
     public void FinishBuilding()
     {
-        SceneManager.LoadScene(2);
+        MainProgram program = FindObjectOfType<MainProgram>();
+        ItemContainer items = FindObjectOfType<ItemContainer>();
+
+        items.transform.SetParent(program.transform);
+
+        SceneLoader.LoadScene(2);
     }
 }

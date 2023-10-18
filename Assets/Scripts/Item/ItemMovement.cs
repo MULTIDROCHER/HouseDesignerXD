@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Item))]
-public class ItemMovement : MonoBehaviour
+public class ItemMovement : MonoBehaviour, IDragHandler
 {
     private Item _item;
 
@@ -12,7 +13,7 @@ public class ItemMovement : MonoBehaviour
         _item = GetComponent<Item>();
     }
 
-    private void OnMouseDrag()
+    public void OnDrag(PointerEventData eventData)
     {
         transform.position = PointerController.MousePosition;
     }

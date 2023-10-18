@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour,IPointerClickHandler
 {
     private Image _image;
 
@@ -16,7 +17,7 @@ public class Item : MonoBehaviour
         Debug.Log(gameObject.transform.position + "item");
     }
 
-    private void OnMouseOver()
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (Input.GetMouseButtonDown(1))
             DestroyItem?.Invoke(this);

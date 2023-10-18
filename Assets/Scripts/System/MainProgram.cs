@@ -3,12 +3,12 @@ using UnityEngine.Events;
 
 public class MainProgram : MonoBehaviour
 {
-    [SerializeField] private Window[] _childPrograms;
+    [SerializeField] private MainProgramChild[] _childPrograms;
 
     public UnityAction Work;
     public UnityAction StopWork;
 
-    private void Awake()
+    private void Start()
     {
         gameObject.SetActive(false);
     }
@@ -22,10 +22,10 @@ public class MainProgram : MonoBehaviour
     {
         StopWork?.Invoke();
 
-        foreach (var window in _childPrograms)
+        foreach (var child in _childPrograms)
         {
-            if (window != null)
-                window.gameObject.SetActive(false);
+            if (child != null)
+                child.gameObject.SetActive(false);
         }
     }
 }

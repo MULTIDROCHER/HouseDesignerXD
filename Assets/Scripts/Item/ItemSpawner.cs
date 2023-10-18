@@ -9,25 +9,26 @@ public class ItemSpawner : ScrollSwitcher, IBeginDragHandler, IDragHandler, IEnd
 
     private Image _image;
     private Item _spawned;
-    private ItemContainer _container;
+    private Transform _itemContainer;
 
     private Vector3 _mousePos => PointerController.MousePosition;
 
     private void OnEnable()
     {
         _image = GetComponent<Image>();
-        _container = FindAnyObjectByType<ItemContainer>();
+        _itemContainer = FindObjectOfType<ItemContainer>().transform;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("work");
-        _spawned = Instantiate(_item, _mousePos, Quaternion.identity, _container.transform);
-        
-        Debug.Log(_spawned.GetComponent<RectTransform>().position);
-
+        if(_itemContainer!=null){
+           _spawned = Instantiate(_item, _mousePos, Quaternion.identity, _itemContainer);
         _spawned.SetImage(_image.sprite);
-        TurnOffScrolling();
+        TurnOffScrolling(); 
+        }else{
+            Debug.Log("penis");
+        }
+        
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,12 +40,19 @@ public class ItemSpawner : ScrollSwitcher, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         if (_spawned != null)
+        {
+            SetZPosition(_spawned);
             _spawned.ItemDroped?.Invoke(_spawned);
-
-        Vector3 pos = _spawned.transform.position;
-        pos.z = 0;
-        _spawned.GetComponent<RectTransform>().position = pos;
+        }
 
         TurnOnScrolling();
+    }
+
+    private void SetZPosition(Item item)
+    {
+        var rectTransform = item.GetComponent<RectTransform>();
+        var anchoredPos = rectTransform.anchoredPosition3D;
+        anchoredPos.z = 0;
+        item.GetComponent<RectTransform>().anchoredPosition3D = anchoredPos;
     }
 }
