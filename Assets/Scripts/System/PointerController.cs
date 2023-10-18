@@ -28,6 +28,6 @@ public class PointerController : MonoBehaviour
 
     private void SetCursor(Texture2D cursor)
     {
-        Cursor.SetCursor(cursor, new Vector2(30, 40), CursorMode.Auto);
+        Cursor.SetCursor(cursor, new Vector2(40, 30), CursorMode.Auto);
     }
 }

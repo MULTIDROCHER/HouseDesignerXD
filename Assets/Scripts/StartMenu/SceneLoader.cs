@@ -10,15 +10,13 @@ public class SceneLoader : MonoBehaviour
 
         if (loadingScreen != null)
             loadingScreen.Loading(sceneIndex);
-            else
-            Debug.Log("fuc");
     }
 
-    private LoadingScript FindLoadingScreen()
+    private LoadingScreen FindLoadingScreen()
     {
-        LoadingScript[] objects = Resources.FindObjectsOfTypeAll<LoadingScript>();
+        LoadingScreen[] objects = Resources.FindObjectsOfTypeAll<LoadingScreen>();
 
-        LoadingScript loadingScreen = objects.FirstOrDefault(screen => !screen.gameObject.activeSelf);
+        LoadingScreen loadingScreen = objects.FirstOrDefault(screen => !screen.gameObject.activeSelf);
 
         return loadingScreen;
     }

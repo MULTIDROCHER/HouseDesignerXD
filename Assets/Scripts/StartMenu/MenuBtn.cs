@@ -25,8 +25,6 @@ public abstract class MenuBtn : MonoBehaviour, IPointerEnterHandler, IPointerExi
         _button.onClick.RemoveListener(OnButtonClick);
     }
 
-    protected abstract void OnButtonClick();
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.localScale += _hoveredSize;
@@ -36,4 +34,6 @@ public abstract class MenuBtn : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         transform.localScale = _defaultSize;
     }
+
+    protected abstract void OnButtonClick();
 }

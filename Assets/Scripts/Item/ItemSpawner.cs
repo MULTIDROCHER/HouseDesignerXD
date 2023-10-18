@@ -21,14 +21,12 @@ public class ItemSpawner : ScrollSwitcher, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(_itemContainer!=null){
-           _spawned = Instantiate(_item, _mousePos, Quaternion.identity, _itemContainer);
-        _spawned.SetImage(_image.sprite);
-        TurnOffScrolling(); 
-        }else{
-            Debug.Log("penis");
+        if (_itemContainer != null)
+        {
+            _spawned = Instantiate(_item, _mousePos, Quaternion.identity, _itemContainer);
+            _spawned.SetImage(_image.sprite);
+            TurnOffScrolling();
         }
-        
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,6 +51,7 @@ public class ItemSpawner : ScrollSwitcher, IBeginDragHandler, IDragHandler, IEnd
         var rectTransform = item.GetComponent<RectTransform>();
         var anchoredPos = rectTransform.anchoredPosition3D;
         anchoredPos.z = 0;
+        
         item.GetComponent<RectTransform>().anchoredPosition3D = anchoredPos;
     }
 }

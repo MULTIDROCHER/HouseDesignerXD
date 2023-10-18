@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadingScript : MonoBehaviour
+public class LoadingScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _status;

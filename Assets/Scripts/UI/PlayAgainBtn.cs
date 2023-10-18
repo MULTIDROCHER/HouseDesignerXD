@@ -1,29 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
-[RequireComponent(typeof(Button))]
-public class PlayAgainBtn : MonoBehaviour
+public class PlayAgainBtn : MenuBtn
 {
-    private Button _button;
-
-    private void Awake()
+    protected override void OnButtonClick()
     {
-        _button = GetComponent<Button>();
-    }
-
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnButtonClick);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-    }
-
-    private void OnButtonClick()
-    {
-        SceneManager.LoadScene(1);
+        SceneLoader.LoadScene(1);
     }
 }

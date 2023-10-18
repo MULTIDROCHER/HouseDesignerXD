@@ -14,7 +14,6 @@ public class Item : MonoBehaviour,IPointerClickHandler
     private void Awake()
     {
         _image = GetComponent<Image>();
-        Debug.Log(gameObject.transform.position + "item");
     }
 
     public void OnPointerClick(PointerEventData eventData)

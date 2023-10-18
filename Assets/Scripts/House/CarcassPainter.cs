@@ -8,8 +8,8 @@ public class CarcassPainter : MonoBehaviour
     [SerializeField] private CarcassPart _coloringZone;
 
     private Button _button;
-    private Image _image;
     private Color _color;
+    private Image _image;
 
     private void Awake()
     {

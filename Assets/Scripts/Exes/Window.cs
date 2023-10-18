@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Window : MonoBehaviour
 {
-    private float _delay = 10f;
+    private float _delay = 15f;
     private WaitForSeconds _lifeTime;
 
     public UnityAction WindowClosed;

@@ -6,11 +6,11 @@ public class Exe : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Window _window;
 
-    public UnityAction<Exe> WindowOpened;
-
     private bool _isOpened = false;
 
     public bool IsOpened => _isOpened;
+
+    public UnityAction<Exe> WindowOpened;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -21,14 +21,14 @@ public class Exe : MonoBehaviour, IPointerClickHandler
         _window.WindowClosed += OnWindowClosed;
     }
 
+    public void Reset()
+    {
+        _isOpened = false;
+    }
+
     private void OnWindowClosed()
     {
         _isOpened = false;
         _window.WindowClosed -= OnWindowClosed;
-    }
-
-    public void Reset()
-    {
-        _isOpened = false;
     }
 }

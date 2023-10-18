@@ -8,10 +8,12 @@ public class BgMovement : MonoBehaviour
     [SerializeField] private bool _moveUp;
 
     private Renderer _renderer;
+    private Vector3 _movement;
 
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
+        _movement = new Vector3(0, _movementSpeed * Time.deltaTime);
     }
 
     private void Update()
@@ -24,7 +26,7 @@ public class BgMovement : MonoBehaviour
 
     private void MoveUp()
     {
-        transform.position += new Vector3(0, _movementSpeed * Time.deltaTime);
+        transform.position += _movement;
 
         if (transform.position.y > _bounce)
             Loop();
@@ -32,7 +34,7 @@ public class BgMovement : MonoBehaviour
 
     private void MoveDown()
     {
-        transform.position -= new Vector3(0, _movementSpeed * Time.deltaTime);
+        transform.position -= _movement;
 
         if (transform.position.y < _bounce)
             Loop();
